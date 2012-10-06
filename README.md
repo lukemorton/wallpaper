@@ -8,8 +8,9 @@ directly.
 To get things running:
 
 ```
+cd app
 bundle install
-rackup app/config.ru
+rackup
 ```
 
 ## What's the point?
