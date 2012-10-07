@@ -30,9 +30,6 @@ module Wall
       rescue validation_exception => e
         form.errors = e.errors
         view
-      rescue Exception => e
-        p e
-        response.body = 'unrecoverable'
       end
       
       return response
