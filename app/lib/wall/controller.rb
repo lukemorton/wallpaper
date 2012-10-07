@@ -3,9 +3,9 @@ require_relative './view_model'
 
 module Wall
   class Controller
-  	def initialize(di)
+    def initialize(di)
       @di = di
-  	end
+    end
 
     def view()
       view_data = {

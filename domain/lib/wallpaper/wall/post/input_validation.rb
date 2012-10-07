@@ -2,7 +2,7 @@ module Wallpaper
   module Wall
     module Post
       class InputValidation
-      	attr_reader :data, :errors
+        attr_reader :data, :errors
 
         def initialize(data)
           @data = {:content => data[:content]}
