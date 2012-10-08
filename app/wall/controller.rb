@@ -4,7 +4,6 @@ require_relative './view_model'
 
 module Wall
   class Controller < Common::Controller
-
     def view()
       view_data[:form] = form
       view_data[:latest_posts] = di[:posts].find_latest(di[:mappers][:post])
