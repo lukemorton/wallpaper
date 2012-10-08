@@ -1,11 +1,9 @@
+require_relative '../common/controller'
 require_relative './form'
 require_relative './view_model'
 
 module Wall
-  class Controller
-    def initialize(di)
-      @di = di
-    end
+  class Controller < Common::Controller
 
     def view()
       view_data[:form] = form
@@ -36,17 +34,6 @@ module Wall
 
   private
 
-    def di()
-      @di
-    end
-
-    def request()
-      di[:request]
-    end
-
-    def response()
-      di[:response]
-    end
 
     def mappers()
       di[:mappers]
