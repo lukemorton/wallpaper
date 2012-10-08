@@ -11,13 +11,9 @@ module Wall
     end
 
     def post()
-      {
-        :success => data.has_key?(:success) ? data[:success] : false,
-        :content => {
-          :value => form.data[:content],
-          :error => error(:content),
-        }
-      }
+      post = data[:form].to_h
+      post[:success] = data.has_key?(:success) ? data[:success] : false
+      return post
     end
 
     def latest_posts()
@@ -30,20 +26,6 @@ module Wall
 
   private
 
-    def data()
-      @data
-    end
-
-    def form()
-      data[:form]
-    end
-
-    def error(key)
-      if form.errors.has_key?(key)
-        return form.errors[key].join('')
-      end
-
-      return []
-    end
+    attr_reader :data
   end
 end
