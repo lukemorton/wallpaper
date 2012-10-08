@@ -4,7 +4,7 @@
 # For example you can create a child and define which fields
 # are expected in the form like so:
 # 
-#     class LoginForm extends Common::Form
+#     class LoginForm < Common::Form
 #       def fields()
 #         [:email, :password]
 #       end
