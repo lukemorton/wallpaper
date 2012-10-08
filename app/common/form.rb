@@ -39,7 +39,7 @@ module Common
       end
 
       if errors.has_key?(key_sym)
-        field[:error] = errors[key_sym]
+        field[:errors] = errors[key_sym]
       end
 
       return field

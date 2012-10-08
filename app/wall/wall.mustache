@@ -22,9 +22,9 @@
             <label for="post">Post message to your wall:</label>
             {{#content}}
               <textarea id="post" name="content">{{value}}</textarea>
-              {{#error}}
+              {{#errors}}
                 <span class="error">{{.}}</span>
-              {{/error}}
+              {{/errors}}
             {{/content}}
         </div>
       {{/post}}
