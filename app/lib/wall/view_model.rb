@@ -3,7 +3,7 @@ require 'mustache'
 module Wall
   class ViewModel < Mustache
     def self.template_file()
-      File.dirname(__FILE__)+'/../../templates/wall.mustache'
+      File.dirname(__FILE__)+'/wall.mustache'
     end
 
     def initialize(data)
