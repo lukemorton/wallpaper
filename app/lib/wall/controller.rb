@@ -7,7 +7,7 @@ module Wall
 
     def view()
       view_data[:form] = form
-      view_data[:latest_posts] = posts.find_latest(mappers[:post])
+      view_data[:latest_posts] = di[:posts].find_latest(di[:mappers][:post])
 
       if request.cookies.has_key?("success")
         view_data[:success] = true
@@ -20,8 +20,8 @@ module Wall
 
     def action()
       begin
-        interaction.post(mappers[:post], form.data)
-      rescue validation_exception => e
+        di[:interaction].post(di[:mappers][:post], form.data)
+      rescue di[:validation_exception] => e
         form.errors = e.errors
         view
       else
@@ -33,23 +33,6 @@ module Wall
     end
 
   private
-
-
-    def mappers()
-      di[:mappers]
-    end
-
-    def posts()
-      di[:posts]
-    end
-
-    def interaction()
-      di[:interaction]
-    end
-
-    def validation_exception()
-      di[:validation_exception]
-    end
 
     def form()
       @form ||= Form.new(request.POST)
