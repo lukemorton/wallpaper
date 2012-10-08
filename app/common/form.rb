@@ -1,3 +1,62 @@
+# `Common::Form` provides some sugar to dealing with form data
+# values and errors.
+# 
+# For example you can create a child and define which fields
+# are expected in the form like so:
+# 
+#     class LoginForm extends Common::Form
+#       def fields()
+#         [:email, :password]
+#       end
+#     end
+# 
+# Then which this class you can pass in data and be assured
+# only the expected data will be stored:
+# 
+#     post_data = {
+#       :email    => 'hey@cool.com',
+#       :password => 'pass',
+#       :unwanted => 'hmm',
+#     }
+#     form = LoginForm.new(post_data)
+#     form.data # => {:email => 'hey@cool.com', :password => 'pass'}
+# 
+# You don't have to pass in data straight away either:
+# 
+#     post_data = {
+#       :email    => 'hey@cool.com',
+#       :password => 'pass',
+#       :unwanted => 'hmm',
+#     }
+#     form = LoginForm.new
+#     form << post_data if request.post?
+#     form.data # => {:email => 'hey@cool.com', :password => 'pass'}
+# 
+# Errors can be set:
+# 
+#     form = LoginForm.new({:email => '...', :password => '...'})
+#     form.errors = {:email => ['Invalid e-mail']}
+# 
+# Validity checked:
+# 
+#     form = LoginForm.new({:email => '...', :password => '...'})
+#     form.errors = {:email => ['Invalid e-mail']}
+#     form.valid? # => false
+# 
+# And you can access everything as if the `Form` was a `Hash`:
+# 
+#     form = LoginForm.new({:email => '...', :password => '...'})
+#     form.errors = {:email => ['Invalid e-mail']}
+#     form[:email][:value] # => '...'
+#     form[:email][:errors] # => ['Invalid e-mail']
+#     form.errors # => {:email => ['Invalid e-mail']}
+# 
+# Oh or export everything as a `Hash`:
+# 
+#     form = LoginForm.new({:email => '...'})
+#     form.errors = {:email => ['Invalid e-mail']}
+#     form.to_h # => {:email => {:value => '...', :errors => ['Invalid e-mail']}}
+# 
 module Common
   class Form
     attr_writer :data, :errors
