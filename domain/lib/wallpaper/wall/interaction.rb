@@ -5,13 +5,13 @@ module Wallpaper
   module Wall
     module Interaction
       def self.post(mapper, data)
-        validation = Post::InputValidation.new(data)
+        input = Post::InputValidation.new(data)
 
-        unless validation.valid?
-          raise Wallpaper::ValidationException.new(validation.errors)
+        unless input.valid?
+          raise Wallpaper::ValidationException.new(input.errors)
         end
 
-        mapper.create(validation.data)
+        mapper.create(input.data)
       end
     end
   end
