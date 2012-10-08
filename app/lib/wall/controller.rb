@@ -8,10 +8,8 @@ module Wall
     end
 
     def view()
-      view_data = {
-        :form => form,
-        :latest_posts => posts.find_latest(mappers[:post]),
-      }
+      view_data[:form] = form
+      view_data[:latest_posts] = posts.find_latest(mappers[:post])
 
       if request.cookies.has_key?("success")
         view_data[:success] = true
@@ -25,11 +23,12 @@ module Wall
     def action()
       begin
         interaction.post(mappers[:post], form.data)
-        response.set_cookie(:success, true)
-        response.redirect('/')
       rescue validation_exception => e
         form.errors = e.errors
         view
+      else
+        response.set_cookie(:success, true)
+        response.redirect('/')
       end
       
       return response
@@ -67,6 +66,10 @@ module Wall
 
     def form()
       @form ||= Form.new(request.POST)
+    end
+
+    def view_data()
+      @view_data ||= {}
     end
   end
 end
