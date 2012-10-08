@@ -4,7 +4,7 @@ module Wall
   module PostMappers
     class SQLite
       def db_path()
-        File.dirname(__FILE__) + '/../../../app.db'
+        File.dirname(__FILE__) + '/../../app.db'
       end
 
       def db()
