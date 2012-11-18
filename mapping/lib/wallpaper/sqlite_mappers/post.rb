@@ -1,16 +1,9 @@
 require 'sqlite3'
+require_relative 'sqlite_mapper'
 
 module Wallpaper
-  module PostMappers
-    class SQLite
-      def db_path()
-        File.dirname(__FILE__) + '/../../app.db'
-      end
-
-      def db()
-        @db ||= SQLite3::Database.new(db_path)
-      end
-
+  module SQLiteMappers
+    class Post < SQLiteMapper
       def create_table!()
         db.execute('CREATE TABLE IF NOT EXISTS posts (content VARCHAR(255), created INTEGER);')
       end
