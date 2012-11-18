@@ -10,7 +10,7 @@
 #       end
 #     end
 # 
-# Then which this class you can pass in data and be assured
+# Then with this class you can pass in data and be assured
 # only the expected data will be stored:
 # 
 #     post_data = {
