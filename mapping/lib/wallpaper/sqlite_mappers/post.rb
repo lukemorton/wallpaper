@@ -1,6 +1,6 @@
 require 'sqlite3'
 
-module Wall
+module Wallpaper
   module PostMappers
     class SQLite
       def db_path()
