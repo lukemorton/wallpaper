@@ -2,7 +2,7 @@ require 'bundler'
 require 'sinatra/base'
 
 APP_ROOT = File.dirname(__FILE__)
-DB_PATH = APP_ROOT + 'app.db'
+DB_PATH = APP_ROOT + '/app.db'
 
 require APP_ROOT + '/wall/controller'
 require APP_ROOT + '/../mapping/lib/wallpaper/sqlite_mappers/post'
